@@ -5,8 +5,7 @@
    <div class="hero-section">
       <div class="hero-content">
          <h1 class="hero-title">Hyperactive</h1>
-         <p class="hero-tagline">A unified interface for optimization algorithms and problems</p>
-         <p class="hero-subtitle">Production-ready hyperparameter optimization for machine learning</p>
+         <p class="hero-tagline">A unified interface for optimization algorithms and experiments</p>
       </div>
    </div>
 
