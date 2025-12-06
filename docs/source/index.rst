@@ -14,19 +14,16 @@
    <div class="badge-banner">
       <div class="badge-items">
          <a href="https://pypi.org/project/hyperactive/" target="_blank">
-            <img src="https://img.shields.io/pypi/v/hyperactive.svg?style=flat-square&color=5D5D7A" alt="PyPI Version" />
+            <img src="_static/images/badges/version.svg" alt="PyPI Version" />
          </a>
          <a href="https://pypi.org/project/hyperactive/" target="_blank">
-            <img src="https://img.shields.io/pypi/pyversions/hyperactive.svg?style=flat-square&color=5D5D7A" alt="Python Versions" />
+            <img src="_static/images/badges/python.svg" alt="Python Versions" />
          </a>
          <a href="https://github.com/SimonBlanke/Hyperactive/blob/master/LICENSE" target="_blank">
-            <img src="https://img.shields.io/github/license/SimonBlanke/Hyperactive.svg?style=flat-square&color=5D5D7A" alt="License" />
-         </a>
-         <a href="https://github.com/SimonBlanke/Hyperactive" target="_blank">
-            <img src="https://img.shields.io/github/stars/SimonBlanke/Hyperactive?style=flat-square&color=5D5D7A" alt="GitHub Stars" />
+            <img src="_static/images/badges/license.svg" alt="License" />
          </a>
          <a href="https://gc-os-ai.github.io/" target="_blank">
-            <img src="https://img.shields.io/badge/GC.OS-Sponsored-0eac92.svg?style=flat-square" alt="GC.OS Sponsored" />
+            <img src="_static/images/badges/sponsor.svg" alt="GC.OS Sponsored" />
          </a>
       </div>
    </div>
@@ -54,7 +51,7 @@ Why Hyperactive?
       Particle Swarm, Genetic Algorithms, and more.
 
       +++
-      Local, global, population-based, and sequential methods.
+      :doc:`Local, global, population-based, and sequential methods <api_reference/optimizers>`
 
    .. grid-item-card::
       :class-card: feature-card
@@ -65,7 +62,7 @@ Why Hyperactive?
       Tune models with minimal code changes.
 
       +++
-      Works with any estimator implementing fit/score.
+      :doc:`Works with any estimator implementing fit/score <user_guide/integrations>`
 
    .. grid-item-card::
       :class-card: feature-card
@@ -76,7 +73,7 @@ Why Hyperactive?
       *how* to optimize (algorithms).
 
       +++
-      Swap algorithms without changing experiment code.
+      :doc:`Swap algorithms without changing experiment code <user_guide/experiments>`
 
    .. grid-item-card::
       :class-card: feature-card
@@ -87,7 +84,7 @@ Why Hyperactive?
       search methods through one unified API.
 
       +++
-      GFO · Optuna · sklearn
+      :doc:`GFO · Optuna · sklearn <user_guide/optimizers>`
 
    .. grid-item-card::
       :class-card: feature-card
@@ -98,7 +95,7 @@ Why Hyperactive?
       Define search spaces with NumPy arrays or lists.
 
       +++
-      Optuna backend supports native continuous ranges.
+      :doc:`Optuna backend supports native continuous ranges <user_guide/search_spaces>`
 
    .. grid-item-card::
       :class-card: feature-card
@@ -109,7 +106,7 @@ Why Hyperactive?
       and active maintenance.
 
       +++
-      Type-annotated · Documented · Tested
+      :doc:`Type-annotated · Documented · Tested <about/history>`
 
 ----
 
@@ -153,69 +150,65 @@ Get started in just a few lines of code:
 
 ----
 
-Available Algorithms
-====================
+Optimizer Backends
+==================
 
-.. grid:: 1 2 2 4
-   :gutter: 3
+Hyperactive provides a unified interface to three powerful optimization backends.
+Choose the one that best fits your needs, or switch between them effortlessly.
+
+.. grid:: 1 1 3 3
+   :gutter: 4
 
    .. grid-item-card::
-      :class-card: algo-card
+      :class-card: backend-card backend-card-gfo
 
-      **Local Search**
+      `Gradient-Free-Optimizers <https://github.com/SimonBlanke/Gradient-Free-Optimizers>`__
       ^^^
-      - Hill Climbing
-      - Repulsing Hill Climbing
+      The native backend with 20 optimization algorithms implemented from scratch.
+      Ideal for custom objective functions and research applications.
+
+      - Hill Climbing variants
       - Simulated Annealing
-      - Downhill Simplex
-
-   .. grid-item-card::
-      :class-card: algo-card
-
-      **Global Search**
-      ^^^
-      - Random Search
-      - Grid Search
-      - Random Restart Hill Climbing
-      - Powell's Method
-      - Pattern Search
-
-   .. grid-item-card::
-      :class-card: algo-card
-
-      **Population Methods**
-      ^^^
-      - Parallel Tempering
-      - Particle Swarm
-      - Spiral Optimization
-      - Genetic Algorithm
-      - Evolution Strategy
-      - Differential Evolution
-
-   .. grid-item-card::
-      :class-card: algo-card
-
-      **Sequential / Bayesian**
-      ^^^
+      - Particle Swarm & Genetic Algorithms
       - Bayesian Optimization
-      - Tree-Parzen Estimators
-      - Forest Optimizer
-      - Lipschitz Optimization
-      - DIRECT Algorithm
+      - And 15+ more algorithms
 
-.. grid:: 1 2 2 4
-   :gutter: 3
+      +++
+      :doc:`Explore GFO algorithms <examples/general>`
 
    .. grid-item-card::
-      :class-card: algo-card optuna-card
+      :class-card: backend-card backend-card-optuna
 
-      **Optuna Backend**
+      `Optuna <https://github.com/optuna/optuna>`__
       ^^^
-      - TPE Optimizer
-      - CMA-ES
-      - Gaussian Process
-      - NSGA-II / NSGA-III
-      - QMC Optimizer
+      Industry-standard hyperparameter optimization framework with
+      state-of-the-art samplers and pruning strategies.
+
+      - Tree-Parzen Estimator (TPE)
+      - CMA-ES for continuous spaces
+      - Gaussian Process optimization
+      - Multi-objective (NSGA-II/III)
+      - Native continuous parameter support
+
+      +++
+      :doc:`Explore Optuna samplers <examples/optuna_backend>`
+
+   .. grid-item-card::
+      :class-card: backend-card backend-card-sklearn
+
+      `scikit-learn <https://github.com/scikit-learn/scikit-learn>`__
+      ^^^
+      Familiar scikit-learn search interfaces with enhanced integration
+      for cross-validation experiments.
+
+      - GridSearchCV
+      - RandomizedSearchCV
+      - HalvingGridSearchCV
+      - HalvingRandomSearchCV
+      - Drop-in sklearn compatibility
+
+      +++
+      :doc:`Explore sklearn integration <examples/sklearn_backend>`
 
 ----
 

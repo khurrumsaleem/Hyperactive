@@ -22,6 +22,15 @@
     --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     /* Neutral separator color */
     --separator-color: #dee2e6;
+
+    /* Backend brand colors - from official logos */
+    --gfo-light: #80b4ff;
+    --gfo-dark: #000054;
+    --gfo-grey: #555555;
+    --optuna-dark: #123692;
+    --optuna-light: #3b82c4;
+    --sklearn-orange: #F7931E;
+    --sklearn-blue: #29ABE2;
 }
 
 html[data-theme="dark"] {
@@ -187,16 +196,54 @@ html[data-theme="dark"] .feature-card:hover {
 
 .feature-card .sd-card-footer {
     font-size: 0.85rem;
-    color: var(--hyperactive-secondary);
+    color: var(--hyperactive-dark);
+    padding: 0;
+    background: #f0f1f3;
+    border-top: 1px solid #e0e2e6;
+}
+
+.feature-card .sd-card-footer p {
+    margin: 0;
+}
+
+.feature-card .sd-card-footer a {
+    display: block;
     padding: 0.75rem 1.25rem;
-    background: #f8f9fa;
-    border-top: 1px solid #e9ecef;
+    color: var(--hyperactive-dark);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.feature-card .sd-card-footer a::after {
+    content: " →";
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.feature-card .sd-card-footer a:hover {
+    background: var(--hyperactive-primary);
+    color: #ffffff;
+}
+
+.feature-card .sd-card-footer a:hover::after {
+    opacity: 1;
 }
 
 html[data-theme="dark"] .feature-card .sd-card-footer {
-    background: #252530;
+    background: #2a2a3a;
     border-top-color: #3d3d4d;
-    color: var(--hyperactive-accent);
+    color: #c8c8d8;
+}
+
+html[data-theme="dark"] .feature-card .sd-card-footer a {
+    color: #c8c8d8;
+}
+
+html[data-theme="dark"] .feature-card .sd-card-footer a:hover {
+    background: var(--hyperactive-secondary);
+    color: #ffffff;
 }
 
 /* ============================================
@@ -233,6 +280,112 @@ html[data-theme="dark"] .algo-card {
 
 .optuna-card:hover {
     border-left-color: var(--hyperactive-primary) !important;
+}
+
+/* ============================================
+   Backend Cards (GFO, Optuna, sklearn)
+   ============================================ */
+.backend-card {
+    border-radius: 8px !important;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: none !important;
+    position: relative;
+    background: var(--pst-color-surface);
+}
+
+/* Side accent bar using pseudo-element for multi-color support */
+.backend-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    border-radius: 8px 0 0 8px;
+}
+
+.backend-card .sd-card-header {
+    padding: 1.25rem 1.5rem 0.75rem;
+    border-bottom: none;
+    background: transparent;
+}
+
+.backend-card .sd-card-header .sd-card-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.backend-card .sd-card-header a {
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.backend-card .sd-card-header a:hover {
+    text-decoration: underline;
+}
+
+.backend-card .sd-card-body {
+    padding: 0.5rem 1.5rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.backend-card .sd-card-body ul {
+    margin: 0.75rem 0 0 0;
+    padding-left: 1.25rem;
+}
+
+.backend-card .sd-card-body li {
+    margin-bottom: 0.4rem;
+}
+
+.backend-card .sd-card-footer {
+    padding: 0;
+    border-top: 1px solid var(--pst-color-border);
+    background: transparent;
+}
+
+.backend-card .sd-card-footer a {
+    display: block;
+    padding: 0.875rem 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.backend-card .sd-card-footer a::after {
+    content: " →";
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+
+.backend-card .sd-card-footer a:hover {
+    padding-left: 1.75rem;
+}
+
+.backend-card .sd-card-footer a:hover::after {
+    opacity: 1;
+}
+
+/* GFO: Tri-color (dark navy | light blue | grey) */
+.backend-card-gfo::before {
+    background: linear-gradient(to bottom,
+        var(--gfo-dark) 0%, var(--gfo-dark) 33%,
+        var(--gfo-light) 33%, var(--gfo-light) 66%,
+        var(--gfo-grey) 66%, var(--gfo-grey) 100%);
+}
+
+/* Optuna: Vertical gradient (dark blue → light blue) */
+.backend-card-optuna::before {
+    background: linear-gradient(to bottom, var(--optuna-dark) 0%, var(--optuna-light) 100%);
+}
+
+/* sklearn: 50/50 split (orange | cyan) */
+.backend-card-sklearn::before {
+    background: linear-gradient(to bottom, var(--sklearn-orange) 50%, var(--sklearn-blue) 50%);
 }
 
 /* ============================================
