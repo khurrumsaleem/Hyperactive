@@ -7,8 +7,6 @@ import re
 import sys
 from pathlib import Path
 
-import hyperactive
-
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -17,8 +15,9 @@ import hyperactive
 
 ON_READTHEDOCS = os.environ.get("READTHEDOCS") == "True"
 if not ON_READTHEDOCS:
-    sys.path.insert(0, os.path.abspath("../.."))
+    sys.path.insert(0, os.path.abspath("../../src"))
 
+import hyperactive  # noqa: E402  # must be after sys.path modification
 
 # -- Extract metadata from pyproject.toml ------------------------------------
 # This allows documentation to stay in sync with pyproject.toml automatically
