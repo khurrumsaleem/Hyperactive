@@ -1,8 +1,8 @@
 # Hyperactive CI Docker Image
 # Pre-installs all dependencies to speed up CI runs
 #
-# Build with: docker build --build-arg PYTHON_VERSION=3.11 -t ghcr.io/simonblanke/hyperactive-ci:py3.11 .
-# Push with:  docker push ghcr.io/simonblanke/hyperactive-ci:py3.11
+# Build with: docker build --build-arg PYTHON_VERSION=3.11 -t ghcr.io/hyperactive-project/hyperactive-ci:py3.11 .
+# Push with:  docker push ghcr.io/hyperactive-project/hyperactive-ci:py3.11
 
 ARG PYTHON_VERSION=3.11
 
@@ -10,7 +10,7 @@ FROM python:${PYTHON_VERSION}-slim
 
 ARG PYTHON_VERSION
 
-LABEL org.opencontainers.image.source="https://github.com/SimonBlanke/Hyperactive"
+LABEL org.opencontainers.image.source="https://github.com/hyperactive-project/Hyperactive"
 LABEL org.opencontainers.image.description="Hyperactive CI image with pre-installed dependencies (Python ${PYTHON_VERSION})"
 LABEL org.opencontainers.image.licenses="MIT"
 

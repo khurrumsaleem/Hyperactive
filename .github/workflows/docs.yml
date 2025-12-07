@@ -27,7 +27,7 @@ jobs:
     name: test-doc-snippets
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/simonblanke/hyperactive-ci:py${{ matrix.python-version }}
+      image: ghcr.io/hyperactive-project/hyperactive-ci:py${{ matrix.python-version }}
     strategy:
       matrix:
         python-version: ['3.10', '3.11', '3.12']
@@ -52,7 +52,7 @@ jobs:
     name: build-docs
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/simonblanke/hyperactive-ci:py3.12
+      image: ghcr.io/hyperactive-project/hyperactive-ci:py3.12
     needs: test-snippets
 
     steps:
