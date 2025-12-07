@@ -7,6 +7,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&display=swap');
 
 /* ============================================
+   PyData Theme Color Overrides (purple theme)
+   ============================================ */
+html[data-theme="light"] {
+    --pst-color-primary: #5D5D7A;
+    --pst-color-primary-bg: #f0f0f8;
+    --pst-color-secondary: #7070A0;
+    --pst-color-accent: #8080B0;
+    --pst-color-info: #7070A0;
+    --pst-color-link: #5D5D7A;
+    --pst-color-link-hover: #4A4A65;
+    --pst-color-target: rgba(125, 125, 170, 0.2);
+}
+
+html[data-theme="dark"] {
+    --pst-color-primary: #9090C0;
+    --pst-color-primary-bg: #2a2a3a;
+    --pst-color-secondary: #A0A0D0;
+    --pst-color-accent: #B0B0E0;
+    --pst-color-info: #9090C0;
+    --pst-color-link: #A0A0D0;
+    --pst-color-link-hover: #B0B0E0;
+    --pst-color-target: rgba(160, 160, 208, 0.2);
+    --separator-color: #3d3d4d;
+}
+
+/* ============================================
    CSS Variables for consistent theming
    ============================================ */
 :root {
@@ -39,10 +65,6 @@
     --skpro-teal: #01ab90;
     --pytorch-orange: #ee4c2c;
     --pytorch-yellow: #eaa700;
-}
-
-html[data-theme="dark"] {
-    --separator-color: #3d3d4d;
 }
 
 /* ============================================
@@ -215,7 +237,8 @@ html[data-theme="dark"] .feature-card:hover {
 }
 
 .feature-card .sd-card-footer a {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 0.75rem 1.25rem;
     color: var(--hyperactive-dark);
     text-decoration: none;
@@ -224,19 +247,21 @@ html[data-theme="dark"] .feature-card:hover {
 }
 
 .feature-card .sd-card-footer a::after {
-    content: " →";
+    content: "→";
+    margin-left: auto;
+    padding-left: 1rem;
     opacity: 0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    display: inline-block;
+    transform: translateX(-8px);
+    transition: all 0.2s ease;
 }
 
 .feature-card .sd-card-footer a:hover {
-    background: var(--hyperactive-primary);
-    color: #ffffff;
+    background: #e4e6ea;
 }
 
 .feature-card .sd-card-footer a:hover::after {
-    opacity: 1;
+    opacity: 0.6;
+    transform: translateX(0);
 }
 
 html[data-theme="dark"] .feature-card .sd-card-footer {
@@ -250,8 +275,7 @@ html[data-theme="dark"] .feature-card .sd-card-footer a {
 }
 
 html[data-theme="dark"] .feature-card .sd-card-footer a:hover {
-    background: var(--hyperactive-secondary);
-    color: #ffffff;
+    background: #3a3a4a;
 }
 
 /* ============================================
@@ -353,10 +377,12 @@ html[data-theme="dark"] .algo-card {
     padding: 0;
     border-top: 1px solid var(--pst-color-border);
     background: transparent;
+    transition: background 0.2s ease;
 }
 
 .backend-card .sd-card-footer a {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 0.875rem 1.5rem;
     text-decoration: none;
     font-weight: 500;
@@ -365,17 +391,21 @@ html[data-theme="dark"] .algo-card {
 }
 
 .backend-card .sd-card-footer a::after {
-    content: " →";
-    opacity: 0.5;
+    content: "→";
+    margin-left: auto;
+    padding-left: 1rem;
+    opacity: 0;
+    transform: translateX(-8px);
     transition: all 0.2s ease;
 }
 
-.backend-card .sd-card-footer a:hover {
-    padding-left: 1.75rem;
+.backend-card .sd-card-footer:hover {
+    background: var(--pst-color-background);
 }
 
 .backend-card .sd-card-footer a:hover::after {
-    opacity: 1;
+    opacity: 0.6;
+    transform: translateX(0);
 }
 
 /* GFO: Tri-color (dark navy | light blue | grey) */
@@ -511,18 +541,95 @@ html[data-theme="dark"] .algo-card {
 /* ============================================
    Navigation Cards
    ============================================ */
-.nav-card {
-    border-radius: 12px !important;
-    transition: all 0.3s ease;
+/* ============================================
+   Contents Navigation Cards (horizontal style)
+   ============================================ */
+.contents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
-.nav-card:hover {
-    transform: translateY(-2px);
+@media (max-width: 992px) {
+    .contents-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .contents-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contents-card {
+    background: var(--pst-color-surface);
+    border-radius: 8px;
+    display: flex;
+    align-items: stretch;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s ease;
+}
+
+.contents-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--hyperactive-primary) 0%, var(--hyperactive-secondary) 100%);
+}
+
+.contents-card:hover {
     box-shadow: var(--card-shadow-hover);
 }
 
-.nav-card .sd-card-title {
-    font-size: 1.1rem;
+.contents-card-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.contents-card:hover .contents-card-inner {
+    background: var(--pst-color-background);
+}
+
+.contents-card-text {
+    flex: 1;
+}
+
+.contents-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+}
+
+.contents-card-desc {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.contents-card-arrow {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.2s ease;
+    margin-left: 1rem;
+    font-size: 1rem;
+}
+
+.contents-card:hover .contents-card-arrow {
+    opacity: 0.6;
+    transform: translateX(0);
 }
 
 /* ============================================
@@ -700,5 +807,291 @@ h2::after {
     .hero-tagline,
     .hero-subtitle {
         color: #000 !important;
+    }
+}
+
+/* ============================================
+   Vertical Tabs Component
+   ============================================ */
+.vertical-tabs {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.vertical-tabs-nav {
+    display: flex;
+    flex-direction: column;
+    width: 190px;
+    flex-shrink: 0;
+    background: var(--pst-color-background);
+    border-radius: 10px;
+    padding: 0.5rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--pst-color-border);
+    align-self: flex-start;
+}
+
+.vertical-tab-btn {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    border-radius: 6px;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--pst-color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    margin: 2px 0;
+}
+
+.vertical-tab-btn:hover {
+    background: var(--pst-color-surface);
+    color: var(--pst-color-text-base);
+}
+
+.vertical-tab-btn.active {
+    border-left-color: var(--hyperactive-primary);
+    background: var(--pst-color-surface);
+    color: var(--hyperactive-primary);
+}
+
+html[data-theme="dark"] .vertical-tab-btn.active {
+    border-left-color: var(--hyperactive-secondary);
+    color: var(--hyperactive-secondary);
+}
+
+.vertical-tab-btn .tab-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--hyperactive-primary);
+    margin-right: 0.75rem;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s ease;
+}
+
+.vertical-tab-btn.active .tab-indicator {
+    opacity: 1;
+    transform: scale(1);
+}
+
+html[data-theme="dark"] .vertical-tab-btn .tab-indicator {
+    background: var(--hyperactive-secondary);
+}
+
+.vertical-tabs-content {
+    flex: 1;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.vertical-tab-panel {
+    display: none;
+}
+
+.vertical-tab-panel.active {
+    display: block;
+    animation: revealVertical 0.35s ease-out;
+}
+
+@keyframes revealVertical {
+    from {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+    }
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Code block styling within vertical tabs */
+.vertical-tab-panel .highlight {
+    margin: 0;
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    height: 380px;
+    overflow: hidden;
+}
+
+.vertical-tab-panel .highlight pre {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    height: 100%;
+    overflow-y: auto;
+    border-radius: 4px;
+}
+
+/* Responsive: Convert to horizontal on smaller screens */
+@media (max-width: 768px) {
+    .vertical-tabs {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .vertical-tabs-nav {
+        flex-direction: row;
+        min-width: 100%;
+        overflow-x: auto;
+        padding: 0.25rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .vertical-tabs-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .vertical-tab-btn {
+        flex-shrink: 0;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        padding: 0.625rem 1rem;
+        white-space: nowrap;
+        margin: 0 2px;
+    }
+
+    .vertical-tab-btn.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--hyperactive-primary);
+    }
+
+    html[data-theme="dark"] .vertical-tab-btn.active {
+        border-bottom-color: var(--hyperactive-secondary);
+    }
+
+    .vertical-tab-btn .tab-indicator {
+        display: none;
+    }
+}
+
+/* Section title styling for Quick Install/Example */
+.vertical-tabs-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--pst-color-text-muted);
+    padding: 0.75rem 1.25rem 0.5rem;
+    margin: 0;
+}
+
+/* Tab description subtitle */
+.vertical-tab-btn .tab-subtitle {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--pst-color-text-muted);
+    margin-top: 0.125rem;
+}
+
+.vertical-tab-btn.active .tab-subtitle {
+    color: var(--hyperactive-secondary);
+}
+
+html[data-theme="dark"] .vertical-tab-btn.active .tab-subtitle {
+    color: var(--hyperactive-accent);
+}
+
+/* ============================================
+   Segmented Control Tabs (for Quick Install)
+   ============================================ */
+.segmented-tabs {
+    margin: 1.5rem 0;
+}
+
+.segmented-tabs-nav {
+    display: inline-flex;
+    background: var(--pst-color-background);
+    border-radius: 10px;
+    padding: 4px;
+    gap: 2px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--pst-color-border);
+}
+
+.segmented-tab-btn {
+    padding: 0.5rem 1.25rem;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--pst-color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.segmented-tab-btn:hover {
+    color: var(--pst-color-text-base);
+}
+
+.segmented-tab-btn.active {
+    background: var(--pst-color-surface);
+    color: var(--hyperactive-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] .segmented-tab-btn.active {
+    color: var(--hyperactive-secondary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.segmented-tabs-content {
+    margin-top: 1rem;
+}
+
+.segmented-tab-panel {
+    display: none;
+    animation: segmentedFadeIn 0.2s ease;
+}
+
+.segmented-tab-panel.active {
+    display: block;
+}
+
+@keyframes segmentedFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.segmented-tab-panel .highlight {
+    border-radius: 8px;
+    margin: 0;
+}
+
+.segmented-tab-panel .highlight pre {
+    margin: 0;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive: stack on very small screens */
+@media (max-width: 540px) {
+    .segmented-tabs-nav {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .segmented-tab-btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 0.5rem 0.75rem;
     }
 }

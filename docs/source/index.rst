@@ -9,6 +9,12 @@
       </div>
    </div>
 
+
+Hyperactive provides a collection of optimization algorithms, accessible through a unified
+experiment-based interface that separates optimization problems from algorithms. The library
+provides native implementations of algorithms from the Gradient-Free-Optimizers package
+alongside direct interfaces to Optuna and scikit-learn optimizers.
+
 .. raw:: html
 
    <div class="badge-banner">
@@ -29,15 +35,12 @@
    </div>
 
 
-Hyperactive provides a collection of optimization algorithms, accessible through a unified
-experiment-based interface that separates optimization problems from algorithms. The library
-provides native implementations of algorithms from the Gradient-Free-Optimizers package
-alongside direct interfaces to Optuna and scikit-learn optimizers.
-
 ----
 
-Why Hyperactive?
+Features
 ================
+
+What makes Hyperactive stand out for optimization tasks.
 
 .. grid:: 1 2 3 3
    :gutter: 4
@@ -45,7 +48,7 @@ Why Hyperactive?
    .. grid-item-card::
       :class-card: feature-card
 
-      **20 Optimization Algorithms**
+      **20+ Optimization Algorithms**
       ^^^
       From Hill Climbing to Bayesian Optimization,
       Particle Swarm, Genetic Algorithms, and more.
@@ -110,47 +113,7 @@ Why Hyperactive?
 
 ----
 
-Quick Example
-=============
-
-Get started in just a few lines of code:
-
-.. tab-set::
-
-   .. tab-item:: Custom Function
-
-      .. literalinclude:: _snippets/getting_started/index_custom_function.py
-         :language: python
-         :start-after: # [start:full_example]
-         :end-before: # [end:full_example]
-
-   .. tab-item:: Scikit-learn Tuning
-
-      .. literalinclude:: _snippets/getting_started/index_sklearn_tuning.py
-         :language: python
-         :start-after: # [start:full_example]
-         :end-before: # [end:full_example]
-
-   .. tab-item:: Bayesian Optimization
-
-      .. literalinclude:: _snippets/getting_started/index_bayesian.py
-         :language: python
-         :start-after: # [start:full_example]
-         :end-before: # [end:full_example]
-
-----
-
-.. raw:: html
-
-   <div class="visualization-section">
-      <h2>Visualization</h2>
-      <p>Watch Bayesian Optimization intelligently explore parameter space:</p>
-      <img src="_static/images/bayes_convex.gif" alt="Bayesian Optimization Animation" class="optimization-gif" />
-   </div>
-
-----
-
-Optimizer Backends
+Optimization Backends
 ==================
 
 Hyperactive provides a unified interface to three powerful optimization backends.
@@ -215,6 +178,8 @@ Choose the one that best fits your needs, or switch between them effortlessly.
 Integrations
 ============
 
+Hyperactive works seamlessly with popular machine learning frameworks.
+
 .. raw:: html
 
    <div class="integration-grid">
@@ -265,20 +230,150 @@ Integrations
 Quick Install
 =============
 
-.. code-block:: bash
+.. raw:: html
 
-   pip install hyperactive
+   <div class="segmented-tabs" id="install-tabs">
+      <nav class="segmented-tabs-nav" role="tablist">
+         <button class="segmented-tab-btn active" role="tab" aria-selected="true" aria-controls="install-panel-pip">
+            pip install
+         </button>
+         <button class="segmented-tab-btn" role="tab" aria-selected="false" aria-controls="install-panel-extras">
+            All Extras
+         </button>
+         <button class="segmented-tab-btn" role="tab" aria-selected="false" aria-controls="install-panel-sklearn">
+            sklearn
+         </button>
+         <button class="segmented-tab-btn" role="tab" aria-selected="false" aria-controls="install-panel-sktime">
+            sktime
+         </button>
+      </nav>
+      <div class="segmented-tabs-content">
+         <div class="segmented-tab-panel active" id="install-panel-pip" role="tabpanel">
+            <div class="highlight"><pre><span class="gp">$ </span>pip install hyperactive</pre></div>
+         </div>
+         <div class="segmented-tab-panel" id="install-panel-extras" role="tabpanel">
+            <div class="highlight"><pre><span class="gp">$ </span>pip install hyperactive[all_extras]</pre></div>
+         </div>
+         <div class="segmented-tab-panel" id="install-panel-sklearn" role="tabpanel">
+            <div class="highlight"><pre><span class="gp">$ </span>pip install hyperactive[sklearn-integration]</pre></div>
+         </div>
+         <div class="segmented-tab-panel" id="install-panel-sktime" role="tabpanel">
+            <div class="highlight"><pre><span class="gp">$ </span>pip install hyperactive[sktime-integration]</pre></div>
+         </div>
+      </div>
+   </div>
 
-For additional integrations:
+----
 
-.. code-block:: bash
+Quick Example
+=============
 
-   # Full installation with all extras
-   pip install hyperactive[all_extras]
+Get started in just a few lines of code:
 
-   # Or specific integrations
-   pip install hyperactive[sklearn-integration]
-   pip install hyperactive[sktime-integration]
+.. raw:: html
+
+   <div class="vertical-tabs" id="example-tabs">
+      <nav class="vertical-tabs-nav" role="tablist">
+         <button class="vertical-tab-btn active" role="tab" aria-selected="true" aria-controls="example-panel-custom" data-tab="example-custom">
+            <span class="tab-indicator"></span>
+            <span>Custom Function</span>
+         </button>
+         <button class="vertical-tab-btn" role="tab" aria-selected="false" aria-controls="example-panel-sklearn" data-tab="example-sklearn">
+            <span class="tab-indicator"></span>
+            <span>Scikit-learn Tuning</span>
+         </button>
+         <button class="vertical-tab-btn" role="tab" aria-selected="false" aria-controls="example-panel-bayesian" data-tab="example-bayesian">
+            <span class="tab-indicator"></span>
+            <span>Bayesian Optimization</span>
+         </button>
+      </nav>
+      <div class="vertical-tabs-content">
+         <div class="vertical-tab-panel active" id="example-panel-custom" role="tabpanel">
+
+.. literalinclude:: _snippets/getting_started/index_custom_function.py
+   :language: python
+   :start-after: # [start:full_example]
+   :end-before: # [end:full_example]
+
+.. raw:: html
+
+         </div>
+         <div class="vertical-tab-panel" id="example-panel-sklearn" role="tabpanel">
+
+.. literalinclude:: _snippets/getting_started/index_sklearn_tuning.py
+   :language: python
+   :start-after: # [start:full_example]
+   :end-before: # [end:full_example]
+
+.. raw:: html
+
+         </div>
+         <div class="vertical-tab-panel" id="example-panel-bayesian" role="tabpanel">
+
+.. literalinclude:: _snippets/getting_started/index_bayesian.py
+   :language: python
+   :start-after: # [start:full_example]
+   :end-before: # [end:full_example]
+
+.. raw:: html
+
+         </div>
+      </div>
+   </div>
+
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // Handle vertical tabs (Quick Example)
+      document.querySelectorAll('.vertical-tabs').forEach(function(tabContainer) {
+         const buttons = tabContainer.querySelectorAll('.vertical-tab-btn');
+         const panels = tabContainer.querySelectorAll('.vertical-tab-panel');
+
+         buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+               buttons.forEach(btn => {
+                  btn.classList.remove('active');
+                  btn.setAttribute('aria-selected', 'false');
+               });
+               panels.forEach(panel => panel.classList.remove('active'));
+
+               this.classList.add('active');
+               this.setAttribute('aria-selected', 'true');
+
+               const panelId = this.getAttribute('aria-controls');
+               const panel = document.getElementById(panelId);
+               if (panel) {
+                  panel.classList.add('active');
+               }
+            });
+         });
+      });
+
+      // Handle segmented tabs (Quick Install)
+      document.querySelectorAll('.segmented-tabs').forEach(function(tabContainer) {
+         const buttons = tabContainer.querySelectorAll('.segmented-tab-btn');
+         const panels = tabContainer.querySelectorAll('.segmented-tab-panel');
+
+         buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+               buttons.forEach(btn => {
+                  btn.classList.remove('active');
+                  btn.setAttribute('aria-selected', 'false');
+               });
+               panels.forEach(panel => panel.classList.remove('active'));
+
+               this.classList.add('active');
+               this.setAttribute('aria-selected', 'true');
+
+               const panelId = this.getAttribute('aria-controls');
+               const panel = document.getElementById(panelId);
+               if (panel) {
+                  panel.classList.add('active');
+               }
+            });
+         });
+      });
+   });
+   </script>
 
 ----
 
@@ -299,113 +394,61 @@ Contents
    get_involved
    about
 
-.. grid:: 1 2 2 3
-   :gutter: 3
+.. raw:: html
 
-   .. grid-item-card::
-      :text-align: center
-      :class-card: nav-card
-
-      :fas:`rocket` **Get Started**
-      ^^^
-
-      Quick introduction to using Hyperactive.
-
-      +++
-
-      .. button-ref:: get_started
-         :color: primary
-         :click-parent:
-         :expand:
-
-         Get Started
-
-   .. grid-item-card::
-      :text-align: center
-      :class-card: nav-card
-
-      :fas:`download` **Installation**
-      ^^^
-
-      Installation guide and requirements.
-
-      +++
-
-      .. button-ref:: installation
-         :color: primary
-         :click-parent:
-         :expand:
-
-         Installation
-
-   .. grid-item-card::
-      :text-align: center
-      :class-card: nav-card
-
-      :fas:`book` **User Guide**
-      ^^^
-
-      In-depth tutorials and explanations.
-
-      +++
-
-      .. button-ref:: user_guide
-         :color: primary
-         :click-parent:
-         :expand:
-
-         User Guide
-
-   .. grid-item-card::
-      :text-align: center
-      :class-card: nav-card
-
-      :fas:`code` **API Reference**
-      ^^^
-
-      Technical reference for all classes.
-
-      +++
-
-      .. button-ref:: api_reference
-         :color: primary
-         :click-parent:
-         :expand:
-
-         API Reference
-
-   .. grid-item-card::
-      :text-align: center
-      :class-card: nav-card
-
-      :fas:`laptop-code` **Examples**
-      ^^^
-
-      Code examples and use cases.
-
-      +++
-
-      .. button-ref:: examples
-         :color: primary
-         :click-parent:
-         :expand:
-
-         Examples
-
-   .. grid-item-card::
-      :text-align: center
-      :class-card: nav-card
-
-      :fas:`users` **Get Involved**
-      ^^^
-
-      Contribute to Hyperactive.
-
-      +++
-
-      .. button-ref:: get_involved
-         :color: primary
-         :click-parent:
-         :expand:
-
-         Get Involved
+   <div class="contents-grid">
+      <a href="get_started.html" class="contents-card">
+         <div class="contents-card-inner">
+            <div class="contents-card-text">
+               <div class="contents-card-title">Get Started</div>
+               <div class="contents-card-desc">Quick introduction to Hyperactive</div>
+            </div>
+            <div class="contents-card-arrow">→</div>
+         </div>
+      </a>
+      <a href="installation.html" class="contents-card">
+         <div class="contents-card-inner">
+            <div class="contents-card-text">
+               <div class="contents-card-title">Installation</div>
+               <div class="contents-card-desc">Setup guide and requirements</div>
+            </div>
+            <div class="contents-card-arrow">→</div>
+         </div>
+      </a>
+      <a href="user_guide.html" class="contents-card">
+         <div class="contents-card-inner">
+            <div class="contents-card-text">
+               <div class="contents-card-title">User Guide</div>
+               <div class="contents-card-desc">In-depth tutorials and explanations</div>
+            </div>
+            <div class="contents-card-arrow">→</div>
+         </div>
+      </a>
+      <a href="api_reference.html" class="contents-card">
+         <div class="contents-card-inner">
+            <div class="contents-card-text">
+               <div class="contents-card-title">API Reference</div>
+               <div class="contents-card-desc">Technical reference for all classes</div>
+            </div>
+            <div class="contents-card-arrow">→</div>
+         </div>
+      </a>
+      <a href="examples.html" class="contents-card">
+         <div class="contents-card-inner">
+            <div class="contents-card-text">
+               <div class="contents-card-title">Examples</div>
+               <div class="contents-card-desc">Code examples and use cases</div>
+            </div>
+            <div class="contents-card-arrow">→</div>
+         </div>
+      </a>
+      <a href="get_involved.html" class="contents-card">
+         <div class="contents-card-inner">
+            <div class="contents-card-text">
+               <div class="contents-card-title">Get Involved</div>
+               <div class="contents-card-desc">Contribute to Hyperactive</div>
+            </div>
+            <div class="contents-card-arrow">→</div>
+         </div>
+      </a>
+   </div>
