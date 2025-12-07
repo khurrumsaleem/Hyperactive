@@ -26,8 +26,6 @@ jobs:
   test-snippets:
     name: test-doc-snippets
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/hyperactive-project/hyperactive-ci:py${{ matrix.python-version }}
     strategy:
       matrix:
         python-version: ['3.10', '3.11', '3.12']
@@ -36,10 +34,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install package and docs requirements
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
         run: |
-          pip install --no-cache-dir -e ".[all_extras,test]"
-          pip install --no-cache-dir -r docs/requirements.txt
+          python -m pip install --no-cache-dir --upgrade pip
+          python -m pip install --no-cache-dir -e ".[all_extras,test]"
+          python -m pip install --no-cache-dir -r docs/requirements.txt
 
       - name: Show dependencies
         run: python -m pip list
@@ -51,17 +55,21 @@ jobs:
   build-docs:
     name: build-docs
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/hyperactive-project/hyperactive-ci:py3.12
     needs: test-snippets
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install package and docs requirements
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
         run: |
-          pip install --no-cache-dir -e ".[all_extras]"
-          pip install --no-cache-dir -r docs/requirements.txt
+          python -m pip install --no-cache-dir --upgrade pip
+          python -m pip install --no-cache-dir -e ".[all_extras]"
+          python -m pip install --no-cache-dir -r docs/requirements.txt
 
       - name: Show dependencies
         run: python -m pip list
