@@ -165,7 +165,7 @@ def main():
         "version.svg": create_badge_svg("version", f"v{version}", COLORS["primary"]),
         "python.svg": create_badge_svg("python", python_range, COLORS["primary"]),
         "license.svg": create_badge_svg("license", license_name, COLORS["primary"]),
-        "sponsor.svg": create_simple_badge_svg("GC.OS Sponsored", COLORS["sponsor"], width=105, font_size=10),
+        "sponsor.svg": create_badge_svg("GC.OS", "Sponsored", COLORS["sponsor"]),
     }
 
     # Write badges

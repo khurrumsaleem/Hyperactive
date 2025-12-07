@@ -343,9 +343,6 @@ Get started in just a few lines of code:
       </div>
    </div>
 
-   <!-- Back to Top Button -->
-   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-
    <script>
    document.addEventListener('DOMContentLoaded', function() {
       // Handle vertical tabs (Quick Example)
@@ -398,19 +395,25 @@ Get started in just a few lines of code:
          });
       });
 
-      // Back to Top button
-      const backToTop = document.getElementById('backToTop');
-      if (backToTop) {
-         window.addEventListener('scroll', function() {
-            if (window.scrollY > 400) {
-               backToTop.classList.add('visible');
-            } else {
-               backToTop.classList.remove('visible');
-            }
+      // Back to Top - inject into sidebar
+      const sidebar = document.querySelector('.bd-toc-nav.page-toc');
+      if (sidebar) {
+         const backToTopDiv = document.createElement('div');
+         backToTopDiv.className = 'back-to-top-sidebar';
+         backToTopDiv.innerHTML = '<a href="#">↑ Back to top</a>';
+         sidebar.appendChild(backToTopDiv);
+
+         backToTopDiv.querySelector('a').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
          });
 
-         backToTop.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+         window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+               backToTopDiv.classList.add('visible');
+            } else {
+               backToTopDiv.classList.remove('visible');
+            }
          });
       }
    });

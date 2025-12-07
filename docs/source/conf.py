@@ -238,6 +238,10 @@ html_theme = "pydata_sphinx_theme"
 # documentation.
 
 html_theme_options = {
+    "logo": {
+        "image_light": "_static/images/navbar_logo.svg",
+        "image_dark": "_static/images/navbar_logo_dark.svg",
+    },
     "icon_links": [
         {
             "name": "GitHub",

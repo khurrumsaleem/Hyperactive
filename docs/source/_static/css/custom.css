@@ -68,6 +68,64 @@ html[data-theme="dark"] {
 }
 
 /* ============================================
+   Top Navbar Styling
+   ============================================ */
+.bd-header.navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: auto !important;
+}
+
+.bd-header .navbar-header-items {
+    flex-wrap: nowrap !important;
+}
+
+.bd-header .navbar-header-items__center {
+    flex-wrap: nowrap !important;
+}
+
+.bd-header .navbar-header-items__start {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.navbar-brand {
+    padding: 0.25rem 0 !important;
+    margin-right: 0.75rem !important;
+    flex-shrink: 0 !important;
+}
+
+.navbar-brand .logo__image {
+    height: 36px !important;
+    width: auto !important;
+    max-height: 36px !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.navbar-brand p,
+.navbar-brand .logo__title {
+    display: none !important;
+}
+
+.bd-navbar .navbar-nav {
+    gap: 0.1rem;
+    flex-wrap: nowrap !important;
+}
+
+.bd-navbar .nav-link {
+    padding: 0.4rem 0.5rem !important;
+    white-space: nowrap;
+    font-size: 0.85rem;
+}
+
+.bd-navbar .dropdown-toggle {
+    padding: 0.4rem 0.5rem !important;
+    font-size: 0.85rem;
+}
+
+/* ============================================
    Right Sidebar - On This Page spacing
    ============================================ */
 .bd-toc-nav.page-toc {
@@ -130,51 +188,40 @@ html[data-theme="dark"] {
 }
 
 /* ============================================
-   Back to Top Button
+   Back to Top Link (in sidebar)
    ============================================ */
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 44px;
-    height: 44px;
-    background: var(--hyperactive-primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
+.back-to-top-sidebar {
+    display: none;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--pst-color-border);
+}
+
+.back-to-top-sidebar.visible {
+    display: block;
+}
+
+.back-to-top-sidebar a {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
-    z-index: 1000;
+    gap: 0.5rem;
+    color: var(--hyperactive-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
+.back-to-top-sidebar a:hover {
+    color: var(--hyperactive-dark);
 }
 
-.back-to-top:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+html[data-theme="dark"] .back-to-top-sidebar a {
+    color: var(--hyperactive-secondary);
 }
 
-html[data-theme="dark"] .back-to-top {
-    background: var(--hyperactive-secondary);
-}
-
-@media (max-width: 768px) {
-    .back-to-top {
-        bottom: 1rem;
-        right: 1rem;
-        width: 40px;
-        height: 40px;
-    }
+html[data-theme="dark"] .back-to-top-sidebar a:hover {
+    color: var(--hyperactive-accent);
 }
 
 .hero-subtitle {
