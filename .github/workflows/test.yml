@@ -301,6 +301,7 @@ jobs:
   test-no-extras:
     name: test-no-extras
     needs: [targeted-tests-gate]
+    if: always() && needs.targeted-tests-gate.result == 'success'
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
@@ -338,6 +339,7 @@ jobs:
   test-all-extras:
     name: test-all-extras
     needs: [targeted-tests-gate]
+    if: always() && needs.targeted-tests-gate.result == 'success'
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
@@ -375,6 +377,7 @@ jobs:
   test-sklearn-versions:
     name: test-sklearn-${{ matrix.sklearn-version }}-python-${{ matrix.python-version }}
     needs: [targeted-tests-gate]
+    if: always() && needs.targeted-tests-gate.result == 'success'
     runs-on: ubuntu-latest
 
     strategy:
@@ -406,6 +409,7 @@ jobs:
   coverage:
     name: coverage
     needs: [targeted-tests-gate]
+    if: always() && needs.targeted-tests-gate.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -436,6 +440,7 @@ jobs:
   doctest-examples:
     name: doctest-examples
     needs: [targeted-tests-gate]
+    if: always() && needs.targeted-tests-gate.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -459,6 +464,7 @@ jobs:
   test-examples:
     name: test-examples
     needs: [targeted-tests-gate]
+    if: always() && needs.targeted-tests-gate.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
