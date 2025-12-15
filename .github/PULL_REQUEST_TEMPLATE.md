@@ -22,7 +22,7 @@
 
 ## Checklist
 
-- [ ] PR title includes appropriate tag: `[Fix]`, `[Feature]`, `[Refactor]`, `[Release]`, or `[Hotfix]`
+- [ ] PR title includes appropriate tag: `[BUG]`, `[ENH]`, `[DOC]` or `[MNT]`
 - [ ] Linked to related issue (if applicable)
 - [ ] Code passes `make check` (lint, format, isort)
 - [ ] Tests added/updated for changes (if applicable)
