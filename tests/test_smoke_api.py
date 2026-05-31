@@ -51,6 +51,7 @@ SK_OPTIMIZER_NAMES = ["GridSearchSk", "RandomSearchSk"]
 BENCHMARK_NAMES = ["Ackley", "Parabola", "Sphere"]
 
 EXPERIMENT_INTEGRATION_NAMES = [
+    "LightGBMExperiment",
     "SklearnCvExperiment",
     "SkproProbaRegExperiment",
     "SktimeClassificationExperiment",
